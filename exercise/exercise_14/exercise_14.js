@@ -1,4 +1,4 @@
-
+/*
 Exercise 14: Using bind(), call(), and apply()
 
 Problem:
@@ -23,4 +23,22 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 `bind` method documentation:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+*/
+function greet(greeting) {
+  console.log(greeting + ", " + this.name + "!");
+}
 
+const user = {
+  name: "Alice",
+};
+const greetingMessage = "Hello";
+
+// Using call()
+greet.call(user, greetingMessage); // Outputs: Hello, Alice!
+
+// Using apply()
+greet.apply(user, [greetingMessage]); // Outputs: Hello, Alice!
+
+// Using bind()
+const greetUser = greet.bind(user);
+greetUser(greetingMessage); // Outputs: Hello, Alice!
